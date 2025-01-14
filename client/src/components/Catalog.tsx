@@ -1,23 +1,15 @@
-import { simpleProduct } from "../lib/types";
+import { product } from "../lib/types";
+import ProductList from "./ProductList";
 
 type CatalogProps = {
-  products: simpleProduct[];
+  products: product[];
   addProduct: () => void;
 };
 
-export default function Catalog({ products, addProduct }: CatalogProps) {
+export default function Catalog({ products }: CatalogProps) {
   return (
     <>
-      <ul>
-        {products.map((item, index) => {
-          return (
-            <li key={index}>
-              {item.name}---{item.price}
-            </li>
-          );
-        })}
-      </ul>
-      <button onClick={addProduct}>Add product</button>
+      <ProductList products={products} />
     </>
   );
 }
