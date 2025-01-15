@@ -1,6 +1,7 @@
 import { product } from "@/lib/types";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
+import { NavLink } from "react-router-dom";
 
 type ProductCardProps = {
   product: product;
@@ -8,7 +9,7 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="w-[280px] flex flex-col overflow-hidden">
+    <Card className="w-[280px] max-w-[100%] flex flex-col overflow-hidden">
       <img
         src={product.pictureUrl}
         alt={product.name}
@@ -21,7 +22,9 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
         <div className="flex justify-between">
           <Button variant={"outline"}>Add to Card</Button>
-          <Button>View</Button>
+          <Button asChild>
+            <NavLink to={`/catalog/${product.id}`}>View</NavLink>
+          </Button>
         </div>
       </CardContent>
     </Card>
